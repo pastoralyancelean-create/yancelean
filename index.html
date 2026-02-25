@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yance Lean Pastoral | Web Developer</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+
+body{
+font-family: 'Space Grotesk', sans-serif;
+}
+
+/* animated background */
+.bg-glow{
+background: radial-gradient(circle at top, rgba(99,102,241,0.25), transparent 60%);
+}
+
+/* scroll progress */
+#progressBar{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+width:0%;
+background:linear-gradient(90deg,#6366f1,#4f46e5);
+z-index:999;
+}
+
+/* glass */
+.glass{
+background: rgba(255,255,255,0.6);
+backdrop-filter: blur(16px);
+border:1px solid rgba(255,255,255,0.2);
+}
+
+.dark .glass{
+background: rgba(15,23,42,0.7);
+}
+
+/* 3d hover */
+.card-3d{
+transform-style: preserve-3d;
+transition: transform 0.4s ease;
+}
+
+.card-3d:hover{
+transform: rotateX(6deg) rotateY(-6deg) scale(1.04);
+}
+
+/* floating */
+.floating{
+animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-12px)}
+100%{transform:translateY(0)}
+}
+
+/* glow button */
+.glow-btn{
+box-shadow:0 0 20px rgba(99,102,241,0.4);
+}
+
+</style>
+</head>
+
+<body class="bg-gray-50 dark:bg-slate-950 text-slate-900 dark:text-white transition">
+
+<div id="progressBar"></div>
+
+<!-- THEME -->
+<button id="themeToggle" class="fixed top-6 right-6 z-50 glass p-3 rounded-xl">
+<i data-lucide="moon"></i>
+</button>
+
+<!-- HERO -->
+<section class="min-h-screen flex items-center justify-center text-center bg-glow px-6">
+
+<div data-aos="fade-up">
+<h1 class="text-6xl font-bold mb-6">
+Yance Lean <span class="text-indigo-600">Pastoral</span>
+</h1>
+
+<p id="typing" class="text-lg opacity-80 mb-8"></p>
+
+<a href="#projects"
+class="glow-btn bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold hover:scale-110 transition">
+View My Work
+</a>
+</div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="py-24 text-center max-w-4xl mx-auto px-6">
+<h2 class="text-4xl font-bold mb-6">About Me</h2>
+<p class="opacity-70">
+I create modern and aesthetic websites with smooth animations,
+professional UI design, and responsive layouts.
+</p>
+</section>
+
+<!-- SKILLS -->
+<section class="py-24">
+<div class="max-w-6xl mx-auto px-6 text-center">
+<h2 class="text-4xl font-bold mb-12">My Skills</h2>
+
+<div class="grid md:grid-cols-4 gap-6">
+
+<div class="glass p-6 rounded-2xl floating">HTML</div>
+<div class="glass p-6 rounded-2xl floating">CSS / Tailwind</div>
+<div class="glass p-6 rounded-2xl floating">JavaScript</div>
+<div class="glass p-6 rounded-2xl floating">UI / UX Design</div>
+
+</div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="py-24">
+<div class="max-w-6xl mx-auto px-6">
+
+<h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
+
+<div class="grid md:grid-cols-2 gap-10">
+
+<a href="https://gagfaco.vercel.app" target="_blank">
+<div class="glass rounded-3xl overflow-hidden card-3d">
+
+<img src="https://api.microlink.io/?url=https://gagfaco.vercel.app&screenshot=true&meta=false&embed=screenshot.url"
+class="w-full h-64 object-cover">
+
+<div class="p-8">
+<h3 class="text-2xl font-bold">GAGFACO Website</h3>
+<p class="opacity-70 mt-2">
+Modern agriculture cooperative website.
+</p>
+</div>
+
+</div>
+</a>
+
+<a href="https://loveandwandertravelandtours.vercel.app" target="_blank">
+<div class="glass rounded-3xl overflow-hidden card-3d">
+
+<img src="https://api.microlink.io/?url=https://loveandwandertravelandtours.vercel.app&screenshot=true&meta=false&embed=screenshot.url"
+class="w-full h-64 object-cover">
+
+<div class="p-8">
+<h3 class="text-2xl font-bold">Travel & Tours Website</h3>
+<p class="opacity-70 mt-2">
+Travel agency website with booking UI.
+</p>
+</div>
+
+</div>
+</a>
+
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="py-24 bg-slate-900 text-white text-center">
+
+<h2 class="text-4xl font-bold mb-12">Client Feedback</h2>
+
+<div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 px-6">
+
+<div class="glass p-8 rounded-2xl">
+"Very professional website design!"
+</div>
+
+<div class="glass p-8 rounded-2xl">
+"Highly recommended web developer."
+</div>
+
+</div>
+
+</section>
+
+<!-- FREELANCE -->
+<section class="py-24 text-center">
+
+<h2 class="text-4xl font-bold mb-6">
+Open for Freelance & Collaboration
+</h2>
+
+<p class="opacity-70 mb-8">
+I build modern websites for businesses and brands.
+</p>
+
+<a href="#contact"
+class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold hover:scale-110 transition">
+Hire Me
+</a>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-24 text-center">
+<h2 class="text-4xl font-bold mb-6">Contact Me</h2>
+
+<div class="flex justify-center gap-6">
+
+<a href="#" class="glass p-4 rounded-xl"><i data-lucide="facebook"></i></a>
+<a href="#" class="glass p-4 rounded-xl"><i data-lucide="instagram"></i></a>
+<a href="mailto:youremail@gmail.com" class="glass p-4 rounded-xl"><i data-lucide="mail"></i></a>
+
+</div>
+</section>
+
+<footer class="text-center py-8 opacity-60">
+© 2026 Yance Lean Pastoral
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+
+AOS.init();
+lucide.createIcons();
+
+/* typing */
+const text="Web Designer • Web Developer • Freelancer";
+let i=0;
+function typing(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typing,60);
+}
+}
+typing();
+
+/* scroll progress */
+window.addEventListener("scroll",()=>{
+let winScroll=document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+let scrolled=(winScroll/height)*100;
+document.getElementById("progressBar").style.width=scrolled+"%";
+});
+
+/* theme */
+const themeToggle=document.getElementById("themeToggle");
+themeToggle.onclick=()=>{
+document.documentElement.classList.toggle("dark");
+};
+
+</script>
+
+</body>
+</html>
