@@ -233,7 +233,9 @@ input:focus, textarea:focus{
 © 2026 Yance Lean
 </footer>
 
+<!-- EmailJS SDK -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
 AOS.init();
 lucide.createIcons();
@@ -264,17 +266,21 @@ themeToggle.onclick=()=>{
   document.documentElement.classList.toggle("dark");
 };
 
-/* CONTACT FORM SEND VIA MAILTO */
+/* EmailJS init */
+emailjs.init("YOUR_USER_ID"); // replace with your EmailJS User ID
+
+/* Contact Form */
 const contactForm = document.getElementById('contactForm');
 contactForm.addEventListener('submit', function(e){
     e.preventDefault();
-    const formData = new FormData(contactForm);
-    const name = formData.get('name');
-    const subject = formData.get('subject');
-    const message = formData.get('message');
-    window.location.href = `mailto:pastoralyancelean@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: "+name+"\n\nMessage: "+message)}`;
-    alert("Your message has been prepared in your email client. Please send to contact me.");
-    contactForm.reset();
+
+    emailjs.sendForm('service_jrpotlg', 'template_iuqcskk', this)
+      .then(() => {
+          alert('Message sent successfully!');
+          contactForm.reset();
+      }, (error) => {
+          alert('Oops! Something went wrong: ' + error.text);
+      });
 });
 </script>
 
