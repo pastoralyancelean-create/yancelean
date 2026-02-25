@@ -233,7 +233,6 @@ input:focus, textarea:focus{
 © 2026 Yance Lean
 </footer>
 
-<!-- EmailJS SDK -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
@@ -266,10 +265,10 @@ themeToggle.onclick=()=>{
   document.documentElement.classList.toggle("dark");
 };
 
-/* EmailJS init */
-emailjs.init("YOUR_USER_ID"); // replace with your EmailJS User ID
+/* EmailJS init with Public Key */
+emailjs.init("r-OZq0GDLQ9hb2B51"); // <- your new Public Key
 
-/* Contact Form */
+/* Contact Form submission */
 const contactForm = document.getElementById('contactForm');
 contactForm.addEventListener('submit', function(e){
     e.preventDefault();
