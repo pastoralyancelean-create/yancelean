@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yance Lean Pastoral | Web Developer & Freelancer</title>
+<title>Yance Lean | Web Developer & Freelancer</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -78,9 +78,9 @@ body{
 
 /* input styling */
 input, textarea{
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(12px);
-  border:1px solid rgba(0,0,0,0.1);
+  background: #ffffff;
+  color: #1e293b; /* dark text */
+  border:1px solid #cbd5e1;
   padding:0.8rem 1rem;
   border-radius:12px;
   width:100%;
@@ -91,6 +91,15 @@ input:focus, textarea:focus{
   outline:none;
   border-color:#6366f1;
   box-shadow:0 0 10px rgba(99,102,241,0.4);
+}
+
+/* client feedback "&" */
+.feedback-amp{
+  font-size:4rem;
+  font-weight:bold;
+  background: linear-gradient(90deg,#6366f1,#4f46e5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 </style>
 </head>
@@ -106,137 +115,106 @@ input:focus, textarea:focus{
 
 <!-- HERO -->
 <section class="min-h-screen flex items-center justify-center text-center bg-glow px-6">
-
-<div data-aos="fade-up">
-<h1 class="text-6xl font-bold mb-6">
-Yance Lean <span class="text-indigo-600">Pastoral</span>
-</h1>
-
-<p id="typing" class="text-lg opacity-80 mb-8"></p>
-
-<a href="#projects" class="glow-btn bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold">
-View My Work
-</a>
-</div>
-
+  <div data-aos="fade-up">
+    <h1 class="text-6xl font-bold mb-6">
+      Yance <span class="text-indigo-600">Lean</span>
+    </h1>
+    <p id="typing" class="text-lg opacity-80 mb-8"></p>
+    <a href="#projects" class="glow-btn bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold">
+      View My Work
+    </a>
+  </div>
 </section>
 
 <!-- ABOUT -->
 <section class="py-24 text-center max-w-4xl mx-auto px-6">
-<h2 class="text-4xl font-bold mb-6">About Me</h2>
-<p class="opacity-70 text-lg leading-relaxed">
-Hi, I'm Yance Lean Pastoral, a passionate web developer and designer. I specialize in crafting modern, responsive websites with smooth animations, clean UI, and optimized performance for both desktop and mobile. I bring ideas to life with creativity and attention to detail.
-</p>
+  <h2 class="text-4xl font-bold mb-6">About Me</h2>
+  <p class="opacity-70 text-lg leading-relaxed">
+    Hi, I'm Yance Lean, a passionate web developer and designer. I specialize in crafting modern, responsive websites with smooth animations, clean UI, and optimized performance for both desktop and mobile. I bring ideas to life with creativity and attention to detail.
+  </p>
 </section>
 
 <!-- SKILLS -->
 <section class="py-24">
-<div class="max-w-6xl mx-auto px-6 text-center">
-<h2 class="text-4xl font-bold mb-12">My Skills</h2>
-
-<div class="grid md:grid-cols-4 gap-6">
-
-<div class="glass p-6 rounded-2xl floating">HTML</div>
-<div class="glass p-6 rounded-2xl floating">CSS / Tailwind</div>
-<div class="glass p-6 rounded-2xl floating">JavaScript</div>
-<div class="glass p-6 rounded-2xl floating">UI / UX Design</div>
-
-</div>
-</div>
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-bold mb-12">My Skills</h2>
+    <div class="grid md:grid-cols-4 gap-6">
+      <div class="glass p-6 rounded-2xl floating">HTML</div>
+      <div class="glass p-6 rounded-2xl floating">CSS / Tailwind</div>
+      <div class="glass p-6 rounded-2xl floating">JavaScript</div>
+      <div class="glass p-6 rounded-2xl floating">UI / UX Design</div>
+    </div>
+  </div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects" class="py-24">
-<div class="max-w-6xl mx-auto px-6">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
+    <div class="grid md:grid-cols-2 gap-10">
+      <a href="https://gagfaco.vercel.app" target="_blank">
+        <div class="glass rounded-3xl overflow-hidden card-3d">
+          <img src="https://api.microlink.io/?url=https://gagfaco.vercel.app&screenshot=true&meta=false&embed=screenshot.url" class="w-full h-64 object-cover">
+          <div class="p-8">
+            <h3 class="text-2xl font-bold">GAGFACO Website</h3>
+            <p class="opacity-70 mt-2">Modern agriculture cooperative website with interactive UI.</p>
+          </div>
+        </div>
+      </a>
 
-<h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
-
-<div class="grid md:grid-cols-2 gap-10">
-
-<a href="https://gagfaco.vercel.app" target="_blank">
-<div class="glass rounded-3xl overflow-hidden card-3d">
-<img src="https://api.microlink.io/?url=https://gagfaco.vercel.app&screenshot=true&meta=false&embed=screenshot.url" class="w-full h-64 object-cover">
-<div class="p-8">
-<h3 class="text-2xl font-bold">GAGFACO Website</h3>
-<p class="opacity-70 mt-2">
-Modern agriculture cooperative website with interactive UI.
-</p>
-</div>
-</div>
-</a>
-
-<a href="https://loveandwandertravelandtours.vercel.app" target="_blank">
-<div class="glass rounded-3xl overflow-hidden card-3d">
-<img src="https://api.microlink.io/?url=https://loveandwandertravelandtours.vercel.app&screenshot=true&meta=false&embed=screenshot.url" class="w-full h-64 object-cover">
-<div class="p-8">
-<h3 class="text-2xl font-bold">Travel & Tours Website</h3>
-<p class="opacity-70 mt-2">
-Travel agency website with booking UI and responsive design.
-</p>
-</div>
-</div>
-</a>
-
-</div>
-</div>
+      <a href="https://loveandwandertravelandtours.vercel.app" target="_blank">
+        <div class="glass rounded-3xl overflow-hidden card-3d">
+          <img src="https://api.microlink.io/?url=https://loveandwandertravelandtours.vercel.app&screenshot=true&meta=false&embed=screenshot.url" class="w-full h-64 object-cover">
+          <div class="p-8">
+            <h3 class="text-2xl font-bold">Travel & Tours Website</h3>
+            <p class="opacity-70 mt-2">Travel agency website with booking UI and responsive design.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
 </section>
 
 <!-- TESTIMONIALS -->
 <section class="py-24 bg-slate-900 text-white text-center">
-<h2 class="text-4xl font-bold mb-12">Client Feedback</h2>
-
-<div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 px-6">
-
-<div class="glass p-8 rounded-2xl">
-"Future IT Specialist"
-</div>
-  
-<div class="glass p-8 rounded-2xl">
-"&"
-</div>
-  
-<div class="glass p-8 rounded-2xl">
-"Future Web Developer."
-</div>
-
-</div>
+  <h2 class="text-4xl font-bold mb-12">Client Feedback</h2>
+  <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 px-6 items-center">
+    <div class="glass p-8 rounded-2xl">"Future IT Specialist"</div>
+    <div class="feedback-amp">&</div>
+    <div class="glass p-8 rounded-2xl">"Future Web Developer."</div>
+  </div>
 </section>
 
 <!-- FREELANCE -->
 <section class="py-24 text-center">
-<h2 class="text-4xl font-bold mb-6">
-Open for Freelance & Collaboration
-</h2>
-<p class="opacity-70 mb-8 text-lg leading-relaxed">
-I help businesses and brands establish a strong online presence through modern, responsive, and user-friendly websites. Let's collaborate to bring your ideas to life!
-</p>
-
-<a href="#contact" class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold glow-btn">
-Hire Me
-</a>
+  <h2 class="text-4xl font-bold mb-6">Open for Freelance & Collaboration</h2>
+  <p class="opacity-70 mb-8 text-lg leading-relaxed">
+    I help businesses and brands establish a strong online presence through modern, responsive, and user-friendly websites. Let's collaborate to bring your ideas to life!
+  </p>
+  <a href="#contact" class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold glow-btn">
+    Hire Me
+  </a>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="py-24 text-center">
-<h2 class="text-4xl font-bold mb-6">Contact Me</h2>
+  <h2 class="text-4xl font-bold mb-6">Contact Me</h2>
+  <p class="opacity-80 mb-8 text-lg leading-relaxed">
+    Have a project in mind? Send me a message and I’ll get back to you as soon as possible!
+  </p>
 
-<p class="opacity-70 mb-8">
-Have a project in mind? Send me a message and I’ll get back to you as soon as possible!
-</p>
-
-<form id="contactForm" class="max-w-xl mx-auto flex flex-col gap-6">
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="text" name="subject" placeholder="Subject" required>
-<textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-<button type="submit" class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold glow-btn">
-Send Message
-</button>
-</form>
-
+  <form id="contactForm" class="max-w-xl mx-auto flex flex-col gap-6">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="text" name="subject" placeholder="Subject" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit" class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold glow-btn hover:scale-105 transition">
+      Send Message
+    </button>
+  </form>
 </section>
 
 <footer class="text-center py-8 opacity-60">
-© 2026 Yance Lean Pastoral
+© 2026 Yance Lean
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
@@ -244,46 +222,41 @@ Send Message
 AOS.init();
 lucide.createIcons();
 
-/* typing */
+/* typing effect */
 const text="Web Designer • Web Developer • Freelancer";
 let i=0;
 function typing(){
-if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
-i++;
-setTimeout(typing,60);
-}
+  if(i<text.length){
+    document.getElementById("typing").innerHTML+=text.charAt(i);
+    i++;
+    setTimeout(typing,60);
+  }
 }
 typing();
 
 /* scroll progress */
 window.addEventListener("scroll",()=>{
-let winScroll=document.documentElement.scrollTop;
-let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-let scrolled=(winScroll/height)*100;
-document.getElementById("progressBar").style.width=scrolled+"%";
+  let winScroll=document.documentElement.scrollTop;
+  let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  let scrolled=(winScroll/height)*100;
+  document.getElementById("progressBar").style.width=scrolled+"%";
 });
 
 /* theme toggle */
 const themeToggle=document.getElementById("themeToggle");
 themeToggle.onclick=()=>{
-document.documentElement.classList.toggle("dark");
+  document.documentElement.classList.toggle("dark");
 };
 
-/* CONTACT FORM SEND VIA EMAILJS */
+/* CONTACT FORM SEND VIA MAILTO */
 const contactForm = document.getElementById('contactForm');
 contactForm.addEventListener('submit', function(e){
     e.preventDefault();
-
-    // Collect form data
     const formData = new FormData(contactForm);
     const name = formData.get('name');
     const subject = formData.get('subject');
     const message = formData.get('message');
-
-    // Send email using "mailto" hidden, this won't expose your email
     window.location.href = `mailto:pastoralyancelean@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: "+name+"\n\nMessage: "+message)}`;
-
     alert("Your message has been prepared in your email client. Please send to contact me.");
     contactForm.reset();
 });
