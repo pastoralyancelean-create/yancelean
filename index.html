@@ -12,582 +12,361 @@
 
 <style>
 body{
-  font-family: 'Poppins', sans-serif;
-  overflow-x: hidden;
+font-family:'Poppins',sans-serif;
+overflow-x:hidden;
 }
 
-.code-font {
-  font-family: 'JetBrains Mono', monospace;
+#particles-js,#matrix-canvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
 }
 
-/* Particle Background */
-#particles-js {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
+#matrix-canvas{opacity:.15}
 
-/* Matrix Rain Effect */
-#matrix-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.15;
-}
-
-/* animated background */
-.bg-glow{
-  background: radial-gradient(circle at top, rgba(99,102,241,0.15), transparent 60%);
-  position: relative;
-}
-
-/* scroll progress */
 #progressBar{
-  position:fixed;
-  top:0;
-  left:0;
-  height:4px;
-  width:0%;
-  background:linear-gradient(90deg,#6366f1,#4f46e5,#ec4899);
-  z-index:999;
+position:fixed;
+top:0;
+left:0;
+height:4px;
+width:0%;
+background:linear-gradient(90deg,#6366f1,#ec4899);
+z-index:999;
 }
 
-/* glass */
 .glass{
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(16px);
-  border:1px solid rgba(255,255,255,0.2);
-  transition: all 0.3s ease;
+background:rgba(255,255,255,.6);
+backdrop-filter:blur(16px);
+border:1px solid rgba(255,255,255,.2);
 }
 
 .dark .glass{
-  background: rgba(15,23,42,0.7);
+background:rgba(15,23,42,.7);
 }
 
-/* 3d hover */
 .card-3d{
-  transform-style: preserve-3d;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+transition:.4s;
+transform-style:preserve-3d;
 }
 
 .card-3d:hover{
-  transform: rotateX(6deg) rotateY(-6deg) scale(1.04);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+transform:rotateX(6deg) rotateY(-6deg) scale(1.04);
+box-shadow:0 20px 40px rgba(0,0,0,.2);
 }
 
-/* floating */
-.floating{
-  animation: float 6s ease-in-out infinite;
+/* Circuit Background */
+.circuit-bg{
+position:absolute;
+width:100%;
+height:100%;
+background-image:
+linear-gradient(90deg,rgba(99,102,241,.2) 1px,transparent 1px),
+linear-gradient(rgba(99,102,241,.2) 1px,transparent 1px);
+background-size:40px 40px;
+animation:circuitMove 20s linear infinite;
+opacity:.15;
 }
 
-@keyframes float{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
-  100%{transform:translateY(0)}
+@keyframes circuitMove{
+from{background-position:0 0}
+to{background-position:400px 400px}
 }
 
-/* Glitch Effect */
-.glitch {
-  position: relative;
-  animation: glitch-skew 3s infinite;
+/* Slider */
+.slider{
+overflow:hidden;
+position:relative;
 }
 
-@keyframes glitch-skew {
-  0% { transform: skew(0deg); }
-  10% { transform: skew(-2deg); }
-  20% { transform: skew(2deg); }
-  30% { transform: skew(0deg); }
-  100% { transform: skew(0deg); }
+.slides{
+display:flex;
+transition:transform .6s ease;
 }
 
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.slide{
+min-width:100%;
 }
 
-.glitch::before {
-  animation: glitch-anim 2s infinite;
-  color: #00ffff;
-  z-index: -1;
+/* Skills */
+.skill-bar{
+height:10px;
+background:#1e293b;
+border-radius:10px;
+overflow:hidden;
 }
 
-.glitch::after {
-  animation: glitch-anim 3s infinite reverse;
-  color: #ff00ff;
-  z-index: -2;
+.skill-progress{
+height:100%;
+width:0;
+background:linear-gradient(90deg,#6366f1,#22c55e);
+transition:2s;
 }
 
-@keyframes glitch-anim {
-  0% { clip-path: inset(40% 0 61% 0); transform: translate(0); }
-  20% { clip-path: inset(92% 0 1% 0); transform: translate(-2px, 2px); }
-  40% { clip-path: inset(43% 0 1% 0); transform: translate(2px, -2px); }
-  60% { clip-path: inset(25% 0 58% 0); transform: translate(-2px, 2px); }
-  80% { clip-path: inset(54% 0 7% 0); transform: translate(2px, -2px); }
-  100% { clip-path: inset(58% 0 43% 0); transform: translate(0); }
-}
-
-/* glow button */
+/* buttons */
 .glow-btn{
-  box-shadow:0 0 20px rgba(99,102,241,0.4);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.glow-btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.3);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
-
-.glow-btn:hover::before {
-  width: 300px;
-  height: 300px;
+box-shadow:0 0 20px rgba(99,102,241,.4);
+transition:.3s;
 }
 
 .glow-btn:hover{
-  transform: scale(1.1);
-  box-shadow: 0 0 30px rgba(99,102,241,0.6);
+transform:scale(1.08);
 }
 
-/* Pulse Animation */
-.pulse-glow {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: .7;
-  }
-}
-
-/* Arduino Circuit Lines */
-.circuit-line {
-  position: absolute;
-  background: linear-gradient(90deg, transparent, #6366f1, transparent);
-  animation: circuit-flow 3s linear infinite;
-}
-
-@keyframes circuit-flow {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-/* Typing Cursor */
-.typing-cursor::after {
-  content: '|';
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-/* client feedback "&" */
-.feedback-amp{
-  font-size:4rem;
-  font-weight:bold;
-  background: linear-gradient(90deg,#6366f1,#4f46e5);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* contact inputs & textarea */
-input, textarea{
-  background-color: #ffffff;
-  color: #1e293b;
-  border: 1px solid #cbd5e1;
-  padding: 0.8rem 1rem;
-  border-radius: 12px;
-  width: 100%;
-  transition: all 0.3s ease;
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: #64748b;
-}
-
-input:focus, textarea:focus{
-  outline: none;
-  border-color: #6366f1;
-  box-shadow: 0 0 10px rgba(99,102,241,0.4);
-}
-
-.dark input, .dark textarea {
-  background-color: #f1f5f9;
-  color: #1e293b;
-  border-color: #94a3b8;
-}
-
-.dark input::placeholder, .dark textarea::placeholder {
-  color: #64748b;
-}
-
-/* Arduino Badge */
-.arduino-badge {
-  background: linear-gradient(135deg, #00979D 0%, #005F73 100%);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-weight: 600;
-  display: inline-block;
-  animation: badge-glow 2s ease-in-out infinite;
-}
-
-@keyframes badge-glow {
-  0%, 100% { box-shadow: 0 0 10px rgba(0, 151, 157, 0.5); }
-  50% { box-shadow: 0 0 20px rgba(0, 151, 157, 0.8); }
-}
-
-/* Skill Card Hover */
-.skill-card {
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.skill-card:hover {
-  transform: translateY(-10px) rotate(2deg);
-  box-shadow: 0 15px 30px rgba(99,102,241,0.3);
+input,textarea{
+background:#fff;
+border:1px solid #cbd5e1;
+padding:.8rem;
+border-radius:10px;
+width:100%;
 }
 </style>
 </head>
 
-<body class="bg-gray-50 dark:bg-slate-950 text-slate-900 dark:text-white transition">
+<body class="bg-gray-50 dark:bg-slate-950 text-slate-900 dark:text-white">
 
+<div id="progressBar"></div>
 <canvas id="matrix-canvas"></canvas>
 <div id="particles-js"></div>
-<div id="progressBar"></div>
 
-<!-- THEME -->
-<button id="themeToggle" class="fixed top-6 right-6 z-50 glass p-3 rounded-xl hover:scale-110 transition">
+<button id="themeToggle" class="fixed top-6 right-6 z-50 glass p-3 rounded-xl">
 <i data-lucide="moon"></i>
 </button>
 
 <!-- HERO -->
-<section class="min-h-screen flex items-center justify-center text-center bg-glow px-6 relative">
-  <div data-aos="fade-up" data-aos-duration="1000">
-    <div class="arduino-badge mb-6 pulse-glow">
-      <i data-lucide="cpu" class="inline w-5 h-5"></i> Arduino Developer
-    </div>
-    <h1 class="text-7xl font-black mb-6 glitch" data-text="Yance Lean">
-      Yance <span class="text-indigo-600">Lean</span>
-    </h1>
-    <p id="typing" class="text-xl opacity-80 mb-8 code-font typing-cursor"></p>
-    <div class="flex gap-4 justify-center flex-wrap">
-      <a href="#projects" class="glow-btn bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold">
-        View My Work
-      </a>
-      <a href="#arduino" class="glow-btn bg-teal-600 text-white px-10 py-4 rounded-2xl font-bold">
-        Arduino Projects
-      </a>
-    </div>
-  </div>
+<section class="min-h-screen flex items-center justify-center text-center relative px-6">
+<div class="circuit-bg"></div>
+<div data-aos="fade-up">
+<h1 class="text-7xl font-black mb-6">
+Yance <span class="text-indigo-600">Lean</span>
+</h1>
+<p id="typing" class="text-xl opacity-80 mb-8"></p>
+
+<div class="flex gap-4 justify-center flex-wrap">
+<a href="#projects" class="glow-btn bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold">
+View My Work
+</a>
+<a href="#arduino" class="glow-btn bg-teal-600 text-white px-10 py-4 rounded-2xl font-bold">
+Arduino Projects
+</a>
+</div>
+</div>
 </section>
 
 <!-- ABOUT -->
 <section class="py-24 max-w-6xl mx-auto px-6">
-  <div class="grid md:grid-cols-2 gap-12 items-center">
-    <div data-aos="fade-right">
-      <h2 class="text-5xl font-black mb-6">About Me</h2>
-      <p class="opacity-70 text-lg leading-relaxed mb-4">
-        Hi, I'm <span class="text-indigo-600 font-bold">Yance Lean</span>, a passionate <span class="code-font text-teal-600">Arduino developer</span> and web developer. 
-      </p>
-      <p class="opacity-70 text-lg leading-relaxed mb-4">
-        I specialize in creating <span class="font-semibold">embedded systems</span> and <span class="font-semibold">IoT projects</span> using <span class="arduino-badge text-sm">Arduino Uno</span>. From automation systems to sensor-based projects, I bring hardware to life with code.
-      </p>
-      <p class="opacity-70 text-lg leading-relaxed mb-6">
-        I also craft modern, responsive websites with smooth animations, clean UI, and optimized performance. I combine my skills in hardware and software to create innovative solutions.
-      </p>
-      <div class="flex gap-3 flex-wrap">
-        <span class="glass px-4 py-2 rounded-full text-sm font-semibold">C/C++</span>
-        <span class="glass px-4 py-2 rounded-full text-sm font-semibold">Arduino IDE</span>
-        <span class="glass px-4 py-2 rounded-full text-sm font-semibold">Circuit Design</span>
-        <span class="glass px-4 py-2 rounded-full text-sm font-semibold">IoT</span>
-      </div>
-    </div>
-    <div data-aos="fade-left" class="relative">
-      <div class="glass rounded-3xl overflow-hidden card-3d">
-        <img src="https://images.unsplash.com/photo-1553406830-ef2513450d76?w=800&q=80" 
-             alt="Arduino Programming" 
-             class="w-full h-auto object-cover">
-      </div>
-      <div class="absolute -bottom-6 -right-6 glass p-6 rounded-2xl floating">
-        <p class="code-font text-sm text-indigo-600 font-bold">void loop() { code(); }</p>
-      </div>
-    </div>
-  </div>
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div>
+<h2 class="text-5xl font-black mb-6">About Me</h2>
+<p class="opacity-70 text-lg">
+Arduino Developer and Web Developer creating automation systems,
+IoT solutions, and modern responsive websites.
+</p>
+</div>
+
+<div class="glass rounded-3xl overflow-hidden card-3d">
+<img src="https://images.unsplash.com/photo-1553406830-ef2513450d76?w=800">
+</div>
+</div>
+</section>
+
+<!-- PROJECT SHOWCASE SLIDER -->
+<section class="py-24 bg-gray-100 dark:bg-slate-900">
+<h2 class="text-5xl font-black text-center mb-12">Project Showcase</h2>
+
+<div class="slider max-w-5xl mx-auto">
+<div class="slides" id="slides">
+
+<div class="slide">
+<div class="glass p-10 text-center">
+<h3 class="text-3xl font-bold mb-4">Hydroponic System</h3>
+<p>Solar powered smart farming system.</p>
+</div>
+</div>
+
+<div class="slide">
+<div class="glass p-10 text-center">
+<h3 class="text-3xl font-bold mb-4">Bird Detector</h3>
+<p>Smart crop protection system.</p>
+</div>
+</div>
+
+<div class="slide">
+<div class="glass p-10 text-center">
+<h3 class="text-3xl font-bold mb-4">Web Development</h3>
+<p>Modern responsive business websites.</p>
+</div>
+</div>
+
+</div>
+</div>
 </section>
 
 <!-- ARDUINO PROJECTS -->
 <section id="arduino" class="py-24 bg-slate-900 text-white">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-5xl font-black text-center mb-4" data-aos="fade-up">Arduino Projects</h2>
-    <p class="text-center opacity-70 mb-12 text-lg">Hardware meets software</p>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="glass rounded-3xl p-8 card-3d" data-aos="flip-left" data-aos-delay="100">
-        <div class="text-5xl mb-4">🤖</div>
-        <h3 class="text-2xl font-bold mb-3">Automation System</h3>
-        <p class="opacity-70">Smart home automation using Arduino Uno with sensor integration and relay control.</p>
-      </div>
-      <div class="glass rounded-3xl p-8 card-3d" data-aos="flip-left" data-aos-delay="200">
-        <div class="text-5xl mb-4">🌡️</div>
-        <h3 class="text-2xl font-bold mb-3">IoT Monitoring</h3>
-        <p class="opacity-70">Real-time temperature and humidity monitoring system with data logging capabilities.</p>
-      </div>
-      <div class="glass rounded-3xl p-8 card-3d" data-aos="flip-left" data-aos-delay="300">
-        <div class="text-5xl mb-4">💡</div>
-        <h3 class="text-2xl font-bold mb-3">LED Control</h3>
-        <p class="opacity-70">Advanced LED matrix control with custom animations and pattern programming.</p>
-      </div>
-    </div>
-  </div>
+<div class="max-w-6xl mx-auto px-6">
+<h2 class="text-5xl font-black text-center mb-12">Arduino Projects</h2>
+
+<div class="grid md:grid-cols-2 gap-10">
+
+<div class="glass rounded-3xl p-10 card-3d">
+<div class="flex items-center gap-4 mb-6">
+<i data-lucide="leaf" class="w-8 h-8 text-green-400"></i>
+<h3 class="text-2xl font-bold">
+Solar Powered Hydroponic System with Temp Controller
+</h3>
+</div>
+<p>
+Smart hydroponic farming powered by solar energy with automatic temperature control.
+</p>
+</div>
+
+<div class="glass rounded-3xl p-10 card-3d">
+<div class="flex items-center gap-4 mb-6">
+<i data-lucide="radar" class="w-8 h-8 text-indigo-400"></i>
+<h3 class="text-2xl font-bold">
+Bird Detector & Repellent System
+</h3>
+</div>
+<p>
+Detects birds and activates automatic repellent to protect crops.
+</p>
+</div>
+
+</div>
+</div>
 </section>
 
 <!-- SKILLS -->
 <section class="py-24">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2 class="text-5xl font-black mb-12" data-aos="fade-up">My Skills</h2>
-    <div class="grid md:grid-cols-4 gap-6">
-      <div class="glass p-8 rounded-2xl skill-card" data-aos="zoom-in" data-aos-delay="100">
-        <div class="text-4xl mb-3">⚡</div>
-        <h3 class="font-bold text-xl">Arduino C/C++</h3>
-      </div>
-      <div class="glass p-8 rounded-2xl skill-card" data-aos="zoom-in" data-aos-delay="200">
-        <div class="text-4xl mb-3">🌐</div>
-        <h3 class="font-bold text-xl">HTML/CSS</h3>
-      </div>
-      <div class="glass p-8 rounded-2xl skill-card" data-aos="zoom-in" data-aos-delay="300">
-        <div class="text-4xl mb-3">⚙️</div>
-        <h3 class="font-bold text-xl">JavaScript</h3>
-      </div>
-      <div class="glass p-8 rounded-2xl skill-card" data-aos="zoom-in" data-aos-delay="400">
-        <div class="text-4xl mb-3">🎨</div>
-        <h3 class="font-bold text-xl">UI/UX Design</h3>
-      </div>
-    </div>
-  </div>
+<h2 class="text-5xl font-black text-center mb-12">My Skills</h2>
+
+<div class="max-w-4xl mx-auto space-y-8 px-6">
+
+<div>
+<p class="mb-2">Arduino</p>
+<div class="skill-bar">
+<div class="skill-progress" data-skill="95"></div>
+</div>
+</div>
+
+<div>
+<p class="mb-2">HTML / CSS</p>
+<div class="skill-bar">
+<div class="skill-progress" data-skill="90"></div>
+</div>
+</div>
+
+<div>
+<p class="mb-2">JavaScript</p>
+<div class="skill-bar">
+<div class="skill-progress" data-skill="85"></div>
+</div>
+</div>
+
+<div>
+<p class="mb-2">UI/UX Design</p>
+<div class="skill-bar">
+<div class="skill-progress" data-skill="80"></div>
+</div>
+</div>
+
+</div>
 </section>
 
 <!-- WEB PROJECTS -->
 <section id="projects" class="py-24 bg-gray-100 dark:bg-slate-900">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-5xl font-black text-center mb-12" data-aos="fade-up">Web Projects</h2>
-    <div class="grid md:grid-cols-2 gap-10">
-      <a href="https://gagfaco.vercel.app" target="_blank" data-aos="fade-up" data-aos-delay="100">
-        <div class="glass rounded-3xl overflow-hidden card-3d">
-          <img src="https://api.microlink.io/?url=https://gagfaco.vercel.app&screenshot=true&meta=false&embed=screenshot.url" class="w-full h-64 object-cover">
-          <div class="p-8">
-            <h3 class="text-2xl font-bold">GAGFACO Website</h3>
-            <p class="opacity-70 mt-2">Modern agriculture cooperative website with interactive UI.</p>
-          </div>
-        </div>
-      </a>
+<div class="max-w-6xl mx-auto px-6">
+<h2 class="text-5xl font-black text-center mb-12">Web Projects</h2>
 
-      <a href="https://loveandwandertravelandtours.vercel.app" target="_blank" data-aos="fade-up" data-aos-delay="200">
-        <div class="glass rounded-3xl overflow-hidden card-3d">
-          <img src="https://api.microlink.io/?url=https://loveandwandertravelandtours.vercel.app&screenshot=true&meta=false&embed=screenshot.url" class="w-full h-64 object-cover">
-          <div class="p-8">
-            <h3 class="text-2xl font-bold">Travel & Tours Website</h3>
-            <p class="opacity-70 mt-2">Travel agency website with booking UI and responsive design.</p>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
+<div class="grid md:grid-cols-2 gap-10">
 
-<!-- TESTIMONIALS -->
-<section class="py-24 bg-slate-900 text-white text-center">
-  <h2 class="text-5xl font-black mb-12" data-aos="fade-up">Client Feedback</h2>
-  <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 px-6 items-center">
-    <div class="glass p-8 rounded-2xl" data-aos="fade-right">"Future IT Specialist"</div>
-    <div class="feedback-amp" data-aos="zoom-in">&</div>
-    <div class="glass p-8 rounded-2xl" data-aos="fade-left">"Future Web Developer."</div>
-  </div>
-</section>
+<a href="https://gagfaco.vercel.app" target="_blank">
+<div class="glass rounded-3xl overflow-hidden card-3d">
+<img src="https://api.microlink.io/?url=https://gagfaco.vercel.app&screenshot=true">
+<div class="p-6">
+<h3 class="text-xl font-bold">GAGFACO Website</h3>
+</div>
+</div>
+</a>
 
-<!-- FREELANCE -->
-<section class="py-24 text-center">
-  <h2 class="text-5xl font-black mb-6" data-aos="fade-up">Open for Freelance & Collaboration</h2>
-  <p class="opacity-70 mb-8 text-lg leading-relaxed max-w-3xl mx-auto px-6" data-aos="fade-up" data-aos-delay="100">
-    I help businesses and brands establish a strong online presence through modern, responsive websites. I also create custom Arduino solutions for automation and IoT projects. Let's collaborate!
-  </p>
-  <a href="#contact" class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold glow-btn" data-aos="zoom-in" data-aos-delay="200">
-    Hire Me
-  </a>
+<a href="https://loveandwandertravelandtours.vercel.app" target="_blank">
+<div class="glass rounded-3xl overflow-hidden card-3d">
+<img src="https://api.microlink.io/?url=https://loveandwandertravelandtours.vercel.app&screenshot=true">
+<div class="p-6">
+<h3 class="text-xl font-bold">Travel Website</h3>
+</div>
+</div>
+</a>
+
+</div>
+</div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="py-24 text-center bg-gray-100 dark:bg-slate-900">
-  <h2 class="text-5xl font-black mb-6" data-aos="fade-up">Contact Me</h2>
-  <p class="opacity-80 mb-8 text-lg leading-relaxed" data-aos="fade-up" data-aos-delay="100">
-    Have a project in mind? Send me a message and I'll get back to you ASAP!
-  </p>
+<section id="contact" class="py-24 text-center">
+<h2 class="text-5xl font-black mb-6">Contact Me</h2>
 
-  <form id="contactForm" class="max-w-xl mx-auto flex flex-col gap-6 px-6" data-aos="fade-up" data-aos-delay="200">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="text" name="subject" placeholder="Subject" required>
-    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-    <button type="submit" class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold glow-btn">
-      Send Message
-    </button>
-  </form>
+<form id="contactForm" class="max-w-xl mx-auto flex flex-col gap-6 px-6">
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="text" name="subject" placeholder="Subject" required>
+<textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+<button type="submit" class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold glow-btn">
+Send Message
+</button>
+</form>
 </section>
 
-<footer class="text-center py-8 opacity-60 code-font">
-© 2026 Yance Lean • Built with 💜 and Arduino
+<footer class="text-center py-8 opacity-60">
+© 2026 Yance Lean • Arduino Developer
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
 <script>
-AOS.init({
-  duration: 1000,
-  once: true
-});
+AOS.init();
 lucide.createIcons();
 
-/* Matrix Rain Effect */
-const canvas = document.getElementById('matrix-canvas');
-const ctx = canvas.getContext('2d');
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const matrix = "01ARDUINO";
-const fontSize = 14;
-const columns = canvas.width / fontSize;
-const drops = [];
-
-for (let i = 0; i < columns; i++) {
-  drops[i] = 1;
-}
-
-function drawMatrix() {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  
-  ctx.fillStyle = '#6366f1';
-  ctx.font = fontSize + 'px monospace';
-  
-  for (let i = 0; i < drops.length; i++) {
-    const text = matrix[Math.floor(Math.random() * matrix.length)];
-    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-    
-    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-      drops[i] = 0;
-    }
-    drops[i]++;
-  }
-}
-
-setInterval(drawMatrix, 50);
-
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
-
-/* Particles.js */
-particlesJS('particles-js', {
-  particles: {
-    number: { value: 80, density: { enable: true, value_area: 800 } },
-    color: { value: '#6366f1' },
-    shape: { type: 'circle' },
-    opacity: { value: 0.5, random: false },
-    size: { value: 3, random: true },
-    line_linked: {
-      enable: true,
-      distance: 150,
-      color: '#6366f1',
-      opacity: 0.4,
-      width: 1
-    },
-    move: {
-      enable: true,
-      speed: 2,
-      direction: 'none',
-      random: false,
-      straight: false,
-      out_mode: 'out',
-      bounce: false
-    }
-  },
-  interactivity: {
-    detect_on: 'canvas',
-    events: {
-      onhover: { enable: true, mode: 'repulse' },
-      onclick: { enable: true, mode: 'push' },
-      resize: true
-    }
-  },
-  retina_detect: true
-});
-
-/* typing effect */
-const text="Arduino Developer • Web Developer • IoT Enthusiast • Freelancer";
+/* typing */
+const text="Arduino Developer • Web Developer • IoT Engineer";
 let i=0;
 function typing(){
-  if(i<text.length){
-    document.getElementById("typing").innerHTML+=text.charAt(i);
-    i++;
-    setTimeout(typing,60);
-  }
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typing,60);
+}
 }
 typing();
 
-/* scroll progress */
+/* slider */
+let index=0;
+setInterval(()=>{
+index++;
+if(index>2) index=0;
+document.getElementById("slides").style.transform=
+`translateX(-${index*100}%)`;
+},4000);
+
+/* skill animation */
+const skills=document.querySelectorAll(".skill-progress");
 window.addEventListener("scroll",()=>{
-  let winScroll=document.documentElement.scrollTop;
-  let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-  let scrolled=(winScroll/height)*100;
-  document.getElementById("progressBar").style.width=scrolled+"%";
+skills.forEach(skill=>{
+let value=skill.getAttribute("data-skill");
+skill.style.width=value+"%";
+});
 });
 
 /* theme toggle */
-const themeToggle=document.getElementById("themeToggle");
-themeToggle.onclick=()=>{
-  document.documentElement.classList.toggle("dark");
+document.getElementById("themeToggle").onclick=()=>{
+document.documentElement.classList.toggle("dark");
 };
 
-/* EmailJS init */
+/* email */
 emailjs.init("r-OZq0GDLQ9hb2B51");
-
-/* Contact Form */
-const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    emailjs.sendForm('service_jrpotlg', 'template_iuqcskk', this)
-      .then(() => {
-          alert('Message sent successfully!');
-          contactForm.reset();
-      }, (error) => {
-          alert('Oops! Something went wrong: ' + error.text);
-      });
-});
 </script>
 
 </body>
