@@ -161,6 +161,61 @@ input:focus, textarea:focus {
     transform: translateY(-10px) rotate(2deg);
     box-shadow: 0 15px 30px rgba(99,102,241,0.3);
 }
+.music-player {
+    position: relative;
+    overflow: hidden;
+}
+.music-player::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+    animation: music-glow 3s linear infinite;
+}
+@keyframes music-glow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.music-title {
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-shimmer 2s ease-in-out infinite;
+}
+@keyframes text-shimmer {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+.profile-image-container {
+    position: relative;
+    overflow: hidden;
+}
+.profile-image-container::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: shine 3s ease-in-out infinite;
+}
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+#playBtn {
+    position: relative;
+    animation: pulse-play 2s ease-in-out infinite;
+}
+@keyframes pulse-play {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7); }
+    50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+}
 </style>
 </head>
 <body class="bg-gray-50 dark:bg-slate-950 text-slate-900 dark:text-white transition">
@@ -201,6 +256,27 @@ input:focus, textarea:focus {
             <p class="opacity-70 text-lg leading-relaxed mb-6">
                 I also craft modern, responsive websites with smooth animations, clean UI, and optimized performance. I combine my skills in hardware and software to create innovative solutions.
             </p>
+            
+            <!-- Favorite Song Section -->
+            <div class="glass p-6 rounded-2xl mb-6 music-player" data-aos="fade-up" data-aos-delay="200">
+                <div class="flex items-center gap-4">
+                    <button id="playBtn" class="w-14 h-14 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-full flex items-center justify-center hover:scale-110 transition-all shadow-lg hover:shadow-indigo-500/50">
+                        <i data-lucide="play" class="w-6 h-6 text-white" id="playIcon"></i>
+                    </button>
+                    <div class="flex-1">
+                        <p class="text-sm opacity-60 mb-1">🎵 Favorite Song</p>
+                        <h3 class="font-bold text-lg music-title">Kalapastangan</h3>
+                        <p class="text-sm opacity-70">Fitterkarma</p>
+                    </div>
+                    <div class="volume-control">
+                        <i data-lucide="volume-2" class="w-5 h-5 opacity-70"></i>
+                    </div>
+                </div>
+                <div class="mt-4 h-1 bg-gray-300 dark:bg-gray-700 rounded-full overflow-hidden">
+                    <div id="progressMusic" class="h-full bg-gradient-to-r from-indigo-600 to-purple-600 transition-all duration-300" style="width: 0%"></div>
+                </div>
+            </div>
+            
             <div class="flex gap-3 flex-wrap">
                 <span class="glass px-4 py-2 rounded-full text-sm font-semibold">C/C++</span>
                 <span class="glass px-4 py-2 rounded-full text-sm font-semibold">Arduino IDE</span>
@@ -209,8 +285,13 @@ input:focus, textarea:focus {
             </div>
         </div>
         <div data-aos="fade-left" class="relative">
-            <div class="glass rounded-3xl overflow-hidden card-3d">
-                <img src="https://images.unsplash.com/photo-1553406830-ef2513450d76?w=800&q=80" alt="Arduino Programming" class="w-full h-auto object-cover">
+            <div class="profile-image-container glass rounded-3xl overflow-hidden card-3d relative group">
+                <img src="picture.jpg" alt="Yance Lean" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                    <p class="text-white font-bold text-xl text-center">Yance Lean</p>
+                    <p class="text-white/80 text-center">Arduino Developer</p>
+                </div>
             </div>
             <div class="absolute -bottom-6 -right-6 glass p-6 rounded-2xl floating">
                 <p class="code-font text-sm text-indigo-600 font-bold">void loop() { code(); }</p>
@@ -497,6 +578,39 @@ themeToggle.onclick = () => {
 };
 
 emailjs.init("r-OZq0GDLQ9hb2B51");
+
+// Music Player Functionality
+const audio = new Audio('https://www.youtube.com/watch?v=YOUR_SONG_ID'); // Replace with actual audio file
+const playBtn = document.getElementById('playBtn');
+const playIcon = document.getElementById('playIcon');
+const progressMusic = document.getElementById('progressMusic');
+
+let isPlaying = false;
+
+playBtn.addEventListener('click', () => {
+    if (isPlaying) {
+        audio.pause();
+        playIcon.setAttribute('data-lucide', 'play');
+        isPlaying = false;
+    } else {
+        audio.play();
+        playIcon.setAttribute('data-lucide', 'pause');
+        isPlaying = true;
+    }
+    lucide.createIcons();
+});
+
+audio.addEventListener('timeupdate', () => {
+    const progress = (audio.currentTime / audio.duration) * 100;
+    progressMusic.style.width = progress + '%';
+});
+
+audio.addEventListener('ended', () => {
+    playIcon.setAttribute('data-lucide', 'play');
+    isPlaying = false;
+    progressMusic.style.width = '0%';
+    lucide.createIcons();
+});
 
 const contactForm = document.getElementById('contactForm');
 contactForm.addEventListener('submit', function(e) {
